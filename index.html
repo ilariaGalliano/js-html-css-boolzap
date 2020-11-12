@@ -20,9 +20,9 @@
 
         <!-- Top-aside -->
         <div class="top-aside">
-          <div class="my-user">
-            <img src="./img/avatar_io.jpg" alt="">
-            <span>Nome Utente</span>
+          <div class="my-user" v-model="user">
+            <img :src="'./img/avatar' + user.avatar + '.jpg'"  alt="user">
+            <span>{{ user.name }}</span>
           </div>
             <ul class="list-icon-aside">
               <li>
@@ -54,9 +54,9 @@
             <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
             <i class="fas fa-search"></i>
           </div>
-          <div class="users">
-            <img src="./img/avatar_1.jpg" alt="">
-            <span>Michele</span>
+          <div v-for="(contact,index) in contacts" class="users">
+            <img :src="'./img/avatar' + contact.avatar + '.jpg'" alt="">
+            <span>{{ contact.name }}</span>
           </div>
         </div>
       </aside>
