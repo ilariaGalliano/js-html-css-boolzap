@@ -20,8 +20,10 @@
 
         <!-- Top-aside -->
         <div class="top-aside">
-          <div class="my-user" v-model="user">
-            <img :src="'./img/avatar' + user.avatar + '.jpg'"  alt="user">
+          <div class="my-user">
+            <img :src="'./img/avatar' + user.avatar + '.jpg'"
+                 :alt="user.name"
+            >
             <span>{{ user.name }}</span>
           </div>
             <ul class="list-icon-aside">
@@ -54,10 +56,13 @@
             <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
             <i class="fas fa-search"></i>
           </div>
-          <div v-for="(contact,index) in contacts" class="users">
-            <img :src="'./img/avatar' + contact.avatar + '.jpg'" alt="">
+          <li v-for="(contact,index) in contacts" class="users"
+              :class="indexUser == index ? 'active' : ''"
+              @click="orderUser(index)"
+          >
+            <img :src="'./img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
             <span>{{ contact.name }}</span>
-          </div>
+          </li>
         </div>
       </aside>
 
@@ -67,9 +72,9 @@
         <!-- Top-main -->
         <div class="top">
           <div class="text-user">
-            <img src="./img/avatar_1.jpg" alt="">
+            <img :src="'./img/avatar' + contacts[indexUser].avatar + '.jpg'" :alt="avatar">
             <div class="text-online">
-              <span>Michele</span>
+              <span>{{ contacts[indexUser].name }}</span>
               <small>Ultimo accesso oggi alle 10:35</small>
             </div>
           </div>
@@ -87,11 +92,23 @@
         </div>
 
         <!-- Center-main -->
-        <div class="center"></div>
+        <div class="center">
+
+          <div
+            v-for="(message,index) in contacts[indexUser].messages"
+            class="status-message"
+            :class="message.status == 'sent' ? 'send-msg' : 'received-msg'"
+          >
+            <div :class="message.status == 'sent' ? 'sent' : 'received'">
+              <p>{{ message.message }}</p>
+              <small>{{ message.date }}</small>
+            </div>
+          </div>
+        </div>
 
         <!-- Bottom-main -->
         <div class="bottom">
-          <div class="chat">
+          <div class="chat-footer">
               <a href="#"><i class="far fa-smile"></i></a>
             <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
             <a href="#"><i class="fas fa-microphone"></i></a>
