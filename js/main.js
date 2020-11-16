@@ -109,7 +109,7 @@ var app = new Vue({
              status: 'sent'
          });
           this.newChat = '';
-          setTimeout(this.newMessage (), 3000);
+          setTimeout(this.newMessage, 1000);
         }
       },
       newMessage(){
