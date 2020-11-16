@@ -100,6 +100,25 @@ var app = new Vue({
     methods: {
       orderUser(index){
         this.indexUser = index;
+      },
+      insertNewChat(){
+        if (this.newChat.trim() !== '') {
+          this.contacts[this.indexUser].messages.push({
+             date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
+             message: this.newChat.trim(),
+             status: 'sent'
+         });
+          this.newChat = '';
+          setInterval(this.newMessage (), 1000);
+        }
+      },
+      newMessage(){
+        this.contacts[this.indexUser].messages.push({
+           date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
+           message: 'Ciao!',
+           status: 'received'
+       })
       }
+
     }
 });

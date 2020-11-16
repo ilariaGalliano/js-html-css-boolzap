@@ -110,7 +110,7 @@
         <div class="bottom">
           <div class="chat-footer">
               <a href="#"><i class="far fa-smile"></i></a>
-            <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+            <input type="text" name="" value="" v-model="newChat"  @keyup.enter="insertNewChat" placeholder="Cerca o inizia una nuova chat">
             <a href="#"><i class="fas fa-microphone"></i></a>
           </div>
         </div>
@@ -118,6 +118,9 @@
 
   </div>
 
+    <!--dayjs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js">
+    </script>
     <!-- Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- Js -->
