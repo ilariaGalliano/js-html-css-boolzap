@@ -98,7 +98,16 @@ var app = new Vue({
         indexUser: 0,
         newChat : '',
         searchUser: '',
-        lastAccess: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
+        lastAccess: '',
+        randomText: [
+          'Ciao!',
+          'come stai?',
+          'Usciamo',
+          'Andiamo!',
+          'Devo studiare',
+          'Non posso',
+          'ok'
+        ]
     },
 
     methods: {
@@ -126,9 +135,10 @@ var app = new Vue({
       newMessage(){
         this.contacts[this.indexUser].messages.push({
            date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
-           message: 'Ciao!',
+           message: this.randomText[Math.floor(Math.random() * 7)],
            status: 'received'
        })
+        this.contacts[this.indexUser].lastAccess = dayjs().format('DD/MM/YYYY HH:mm:ss')
      },
 
      // Find my contacts by letters

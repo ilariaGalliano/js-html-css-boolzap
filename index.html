@@ -78,7 +78,7 @@
             <img :src="'./img/avatar' + contacts[indexUser].avatar + '.jpg'" :alt="avatar">
             <div class="text-online">
               <span>{{ contacts[indexUser].name }}</span>
-              <small>Ultimo accesso oggi alle 10:35</small>
+              <small>Ultimo accesso {{contacts[indexUser].lastAccess}}</small>
             </div>
           </div>
           <ul class="list-icon-main">
