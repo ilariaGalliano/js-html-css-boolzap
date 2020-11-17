@@ -138,7 +138,7 @@ var app = new Vue({
       newMessage(){
         this.contacts[this.indexUser].messages.push({
            date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
-           message: this.randomText[Math.floor(Math.random() * 7)],
+           message: this.randomText[Math.floor(Math.random() * 6)],
            status: 'received'
        })
         this.contacts[this.indexUser].lastAccess = dayjs().format('HH:mm:ss')
