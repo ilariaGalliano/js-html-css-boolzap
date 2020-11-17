@@ -4,12 +4,12 @@
 var app = new Vue({
     el: '#app',
     data: {
-        // nostro account
+        // My account
         user: {
             name: 'Ilaria',
             avatar: '_io'
         },
-        // Elenco contatti
+        // Contacts list
         contacts: [
             {
                 name: 'Michele',
@@ -95,12 +95,19 @@ var app = new Vue({
                 ],
             },
         ],
-        indexUser: 0
+        indexUser: 0,
+        newChat : '',
+        searchUser: '',
+        lastAccess: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
     },
+
     methods: {
+
       orderUser(index){
         this.indexUser = index;
       },
+
+      // Add new messages
       insertNewChat(){
         if (this.newChat.trim() !== '') {
           this.contacts[this.indexUser].messages.push({
@@ -108,17 +115,39 @@ var app = new Vue({
              message: this.newChat.trim(),
              status: 'sent'
          });
+         // to clean input
           this.newChat = '';
+         // set Timeout 1s
           setTimeout(this.newMessage, 1000);
         }
       },
+
+      // Auto reply
       newMessage(){
         this.contacts[this.indexUser].messages.push({
            date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
            message: 'Ciao!',
            status: 'received'
        })
-      }
+     },
 
-    }
+     // Find my contacts by letters
+     findContacts (){
+      this.contacts.forEach(element =>{
+
+        if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
+          element.visible = true
+        }
+        else{
+           element.visible = false
+        }
+      });
+    },
+
+    // Delete my messages
+    deleteText(index) {
+        this.contacts[this.indexUser].messages.splice(index, 1);
+       },
+
+  }
 });

@@ -162,7 +162,7 @@ input::placeholder{
   background: #eaeaea;
 }
 
-/* Main */
+/* Main general*/
 .main-messages{
   display: flex;
   flex-direction: column;
@@ -224,15 +224,10 @@ input::placeholder{
 }
 
 /* Utilities - Center main  */
+/* Sent */
 .send-msg{
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  margin: 8px 0;
-}
-.received-msg{
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin: 8px 0;
 }
@@ -240,20 +235,58 @@ input::placeholder{
   background: #ccc;
 }
 .sent{
+  position: relative;
   width: 300px;
   margin: 10px 20px;
-  padding: 10px 8px 5px 20px;
+  padding: 5px 10px 5px 0;
   border-radius: 15px;
   background: #e2ffc7;
   display: block;
 }
+.sent p{
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 0 20px;
+}
+.sent>.fa-chevron-down{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  opacity: 0;
+}
+.sent>.fa-chevron-down:hover{
+  opacity: 100%;
+}
+
+/* Received */
+.received-msg{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 8px 0;
+}
 .received{
+  position: relative;
   width: 300px;
   border-radius: 15px;
   background: #ffffff;
   margin: 10px 20px;
-  padding: 10px 8px 5px 20px;
+  padding: 5px 10px 5px 0;
   display: block;
+}
+.received p{
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 0 20px;
+}
+.received>.fa-chevron-down{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  opacity: 0;
+}
+.received>.fa-chevron-down:hover{
+  opacity: 100%;
 }
 
 /* Bottom main */

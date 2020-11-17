@@ -53,16 +53,19 @@
         <!-- Bottom-aside -->
         <div class="bottom-aside">
           <div class="search">
-            <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+            <input type="text" placeholder="Cerca o inizia una nuova chat"
+                   v-model="searchUser"
+                   @keyup="findContacts"
+            >
             <i class="fas fa-search"></i>
           </div>
           <li v-for="(contact,index) in contacts" class="users"
               :class="indexUser == index ? 'active' : ''"
+              v-show="contact.visible == true"
               @click="orderUser(index)"
           >
             <img :src="'./img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
             <span>{{ contact.name }}</span>
-          </li>
         </div>
       </aside>
 
@@ -99,10 +102,13 @@
             class="status-message"
             :class="message.status == 'sent' ? 'send-msg' : 'received-msg'"
           >
-            <div :class="message.status == 'sent' ? 'sent' : 'received'">
+          <div :class="message.status == 'sent' ? 'sent' : 'received'">
               <p>{{ message.message }}</p>
               <small>{{ message.date }}</small>
-            </div>
+              <i @click= "deleteText(index)"
+                 class="fas fa-chevron-down">
+              </i>
+          </div>
           </div>
         </div>
 
@@ -110,7 +116,11 @@
         <div class="bottom">
           <div class="chat-footer">
               <a href="#"><i class="far fa-smile"></i></a>
-            <input type="text" name="" value="" v-model="newChat"  @keyup.enter="insertNewChat" placeholder="Cerca o inizia una nuova chat">
+            <input type="text"
+                   v-model="newChat"
+                   @keyup.enter="insertNewChat"
+                   placeholder="Cerca o inizia una nuova chat"
+            >
             <a href="#"><i class="fas fa-microphone"></i></a>
           </div>
         </div>
