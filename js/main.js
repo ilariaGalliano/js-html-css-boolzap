@@ -144,8 +144,8 @@ var app = new Vue({
         this.contacts[this.indexUser].lastAccess = dayjs().format('HH:mm:ss')
      },
 
-     // Find my contacts by letters
-     findContacts (){
+      // Find my contacts by letters
+      findContacts (){
       this.contacts.forEach(element =>{
 
         if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
@@ -154,13 +154,14 @@ var app = new Vue({
         else{
            element.visible = false
         }
-      });
-    },
+        
+        });
+      },
 
-    // Delete my messages
-    deleteText(index) {
+      // Delete my messages
+      deleteText(index) {
         this.contacts[this.indexUser].messages.splice(index, 1);
        },
 
-  }
+    }
 });

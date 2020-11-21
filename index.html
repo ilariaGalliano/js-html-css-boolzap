@@ -61,7 +61,7 @@
           </div>
           <li v-for="(contact,index) in contacts" class="users"
               :class="indexUser == index ? 'active' : ''"
-              v-show="contact.visible == true"
+              v-show="contact.visible"
               @click="orderUser(index)"
           >
             <img :src="'./img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
@@ -75,7 +75,7 @@
         <!-- Top-main -->
         <div class="top">
           <div class="text-user">
-            <img :src="'./img/avatar' + contacts[indexUser].avatar + '.jpg'" :alt="avatar">
+            <img :src="'./img/avatar' + contacts[indexUser].avatar + '.jpg'" :alt="contacts.avatar">
             <div class="text-online">
               <span>{{ contacts[indexUser].name }}</span>
               <small>Ultimo accesso {{contacts[indexUser].lastAccess}}</small>
